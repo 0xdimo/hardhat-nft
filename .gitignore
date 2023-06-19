@@ -1,2 +1,9 @@
 node_modules
 package-lock.json
+artifacts
+cache
+.env
+gas-report.txt
+coverage
+coverage.json
+deployments
