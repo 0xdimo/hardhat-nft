@@ -12,7 +12,7 @@ async function storeImages(imagesFilePath) {
     const files = fs.readdirSync(fullImagesPath)
     console.log(files) //logs the read files
     let responses = []
-    console.log("Uploading to IPFS!")
+    console.log("Uploading files to IPFS!")
     for (fileIndex in files) {
         const readableStreamForFile = fs.createReadStream(`${fullImagesPath}/${files[fileIndex]}`)
         try {
