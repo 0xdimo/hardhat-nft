@@ -8,6 +8,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 error RandomIpfsNft__NeedMoreEthSent();
 error RandomIpfsNft__TransferFailed();
+error RandomIpfsNft__RangeOutOfBounds();
 
 contract RandomIpfsNft is VRFConsumerBaseV2, ERC721URIStorage, Ownable {
     enum Breed {
@@ -87,14 +88,16 @@ contract RandomIpfsNft is VRFConsumerBaseV2, ERC721URIStorage, Ownable {
         }
     }
 
-    function getBreedFromModdedRng(uint256 moddedRng) private pure returns (Breed) {
+    function getBreedFromModdedRng(uint256 moddedRng) public pure returns (Breed) {
         uint256[3] memory chanceArray = getChanceArray();
         if (moddedRng < chanceArray[0]) {
             return Breed.PUG;
         } else if (moddedRng < chanceArray[1]) {
             return Breed.SHIBA_INU;
-        } else {
+        } else if (moddedRng < 100) {
             return Breed.ST_BERNARD;
+        } else {
+            revert RandomIpfsNft__RangeOutOfBounds();
         }
     }
 
