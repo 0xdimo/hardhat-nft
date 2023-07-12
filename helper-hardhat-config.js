@@ -7,6 +7,7 @@ const networkConfig = {
         callbackGasLimit: "500000", // 500,000 gas
         vrfCoordinatorV2: "0x8103B0A8A00be2DDC778e6e7eaa21791Cd364625",
         mintFee: "10000000000000000", //0.01 ether
+        ethUsdPriceFeed: "0x694AA1769357215DE4FAC081bf1f309aDC325306"
     },
     31337: {
         name: "hardhat",
